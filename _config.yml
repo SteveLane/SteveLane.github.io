@@ -13,4 +13,3 @@ github_username:  SteveLane
 # Build settings
 markdown: kramdown
 safe: true
-auto: true # Generates website as files are altered.

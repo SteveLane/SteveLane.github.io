@@ -18,3 +18,10 @@ through knitr/rmarkdown?
 Make sure all the required apps/dependencies are there: bower, grunt(-cli),
 foundation, of course you've already installed jekyll!
 
+Need to start a new foundation project:
+
+~~~
+foundation new FoundationProject --libsass
+~~~
+
+Note that foundation requires a new directory for this, so we'll have to copy files over later.
