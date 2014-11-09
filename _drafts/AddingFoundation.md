@@ -1,12 +1,8 @@
 ---
 layout: post
 title: Adding foundation
-tags: {TagA, TagB, TagC}
+tags: TagA TagB
 ---
-
-# This is the first post.
-
-## Heading
 
 Everyman and his dog is likely to have written about adding Foundation (link)
 styling to their jekyll blog, but I'll trace my steps anyway, especially as a
