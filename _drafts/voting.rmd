@@ -1,0 +1,235 @@
+---
+layout: post
+title: "Majority rules: counting a winner"
+comments: true
+tags: voting R
+---
+
+Most of us have had to vote at some stage: in primary/high school, perhaps to
+elect class/school captains, during university to choose the best presentation
+in your physics class, and obviously if you're old enough, voting in elections
+for state/country leaders.
+
+In Australia, we use
+[preferential voting](http://en.wikipedia.org/wiki/Ranked_voting_system) to
+elect officials, and for the lower house (House of Representatives), counting is
+done using a full preferential system, also known as instant runoff voting
+(IRV).
+
+That's all well and good, and you can read up more about preferential voting at
+the linked Wikipedia page, but why am I discussing voting? Last week was Barwon
+Health Research Week, of which I was on the organising committee, and also one
+of the poster judges. Research Week is an annual event at Barwon Health, which
+aims to highlight all of the fantastic research done by Barwon Health and Deakin
+researchers and staff.
+
+As part of the poster judging, we also awarded a prize to the best 'Early Career
+Researcher' (ECR) poster. There were nine judges at the session, and each of us
+ranked a shortlist of five posters: preferential voting at its best!
+
+When it came time to count the votes, there was not a clear winner (actually,
+there was after looking at the data afterwards, but it didn't make a
+difference!), so the question became how to decide on the winner? The chosen
+method: sum the preferences for each poster, with the poster that had the
+*smallest* number of total preferences being the winner.
+
+As a statistician, this irked me. We had data in the form of ranks, but were
+treating them as continuous data. Just because two of the judges placed poster A
+above poster B, doesn't mean the difference between the two posters was judged
+the same, rather that both judges *preferred* poster A to poster B.
+
+Summing, or taking the mean of the preferences, is known as the
+[Borda count](http://en.wikipedia.org/wiki/Borda_count), and by the description
+of how it's done (mean/sum), you can see that it is an *average* method: the
+candidate that wins the vote is often the consensus view, not that which is
+preferred by the majority.
+
+So what other methods could we use? The preferential method as described above?
+Or the [Condorcet method](http://en.wikipedia.org/wiki/Condorcet_method), which
+is a method that chooses the candidate that would win by majority against
+pairings with all the other candidates. The Condorcet method is a *majoritan*
+method. Unfortunately it doesn't work, because you can get cycles. A great
+analogy is on the previously linked Wikipedia page: there may be a situation
+where each candidate wins against another, like in a rock-paper-scissors game.
+
+So how do the methods compare for the earlier mentioned poster competition at
+Barwon Health? Let's have a look! Firstly, I found some code to calculate both
+the Borda and Condorcet winner
+[here](http://www.r-bloggers.com/condorcet-ranking-and-rcpp/). And here's the
+data:
+
+```{r,eval=TRUE}
+votes <- structure(list(ProjectNumber = c("A", "B", "C", "D", "E"),
+                        A = c(1L, 3L, 2L, 4L, 5L), B = c(3L, 4L, 2L, 1L, 5L),
+                        C = c(2L, 4L, 5L, 1L, 3L), D = c(2L, 4L, 1L, 3L, 5L),
+                        E = c(3L, 4L, 5L, 2L, 1L), F = c(1L, 3L, 2L, 4L, 5L),
+                        G = c(1L, 3L, 5L, 4L, 2L), H = c(3L, 2L, 5L, 4L, 1L),
+                        I = c(4L, 1L, 5L, 2L, 3L)),
+                   .Names = c("ProjectNumber", paste("J", 1:9, sep = "")),
+				   class = "data.frame", row.names = c(NA, -5L))
+```
+
+Firstly, what's the Borda count winner?
+
+```{r,echo=FALSE,eval=TRUE}
+AvgRank <- function(BallotMatrix) {
+    Ballots <- as.matrix(BallotMatrix[, -1], mode = "numeric")
+    Num_Candidates <- dim(Ballots)[1]
+    Names <- BallotMatrix[, 1]
+    Ballots[is.na(Ballots)] <- Num_Candidates + 1  #Treat blanks as one worse than min
+    MeanRanks <- rowMeans(Ballots)
+    Rankings <- data.frame(Names, MeanRanks)
+    Rankings <- Rankings[order(rank(Rankings[, 2], ties.method = "random")),
+        ]  #Ties handled through random draw
+    Rankings <- data.frame(Rankings, seq_along(Rankings[, 1]))
+    names(Rankings) <- c("Names", "Average Rank", "Position")
+    return(Rankings)
+}
+AvgRank(votes)
+```
+
+Poster A is the winner by the Borda count, follwed by Poster D. What if we do
+the full preferential count? There were 9 judges, so after distributing
+preferences, a candidate needs 5 votes to be declared a winner. I did this
+manually, and came up with again, Poster A, followed by Poster D.
+
+Finally, how about the Condorcet method? Recall this method counts pairwise
+winners:
+```{r,echo=FALSE,eval=TRUE}
+VoteExtract <- function(BallotMatrix) {
+    Votes <- as.matrix(BallotMatrix[, -1], mode = "numeric")
+    Num_Candidates <- dim(Votes)[1]
+    Votes[is.na(Votes)] <- Num_Candidates + 1  #Treat blanks as one worse than min
+    return(Votes)
+}
+
+PairCount <- function(Votes) {
+    Num_Candidates <- dim(Votes)[1]
+    Pairwise <- matrix(nrow = Num_Candidates, ncol = Num_Candidates)
+    for (CurCand in 1:Num_Candidates) {
+        CandRank <- as.vector(as.matrix(Votes[CurCand, ]))
+        Pref_Cur_Cand <- t(Votes) - CandRank
+        for (Pairs in 1:Num_Candidates) {
+            Pairwise[CurCand, Pairs] <- sum(Pref_Cur_Cand[, Pairs] > 0)
+        }
+    }
+    return(Pairwise)
+}
+
+Schulze <- function(PairsMatrix) {
+    size <- dim(PairsMatrix)[1]
+    p <- matrix(nrow = size, ncol = size)
+    for (i in 1:size) {
+        for (j in 1:size) {
+            if (i != j) {
+                if (PairsMatrix[i, j] > PairsMatrix[j, i]) {
+                  p[i, j] <- PairsMatrix[i, j]
+                } else {
+                  p[i, j] <- 0
+                }
+            }
+        }
+    }
+    for (i in 1:size) {
+        for (j in 1:size) {
+            if (i != j) {
+                for (k in 1:size) {
+                  if (i != k && j != k) {
+                    p[j, k] <- max(p[j, k], min(p[j, i], p[i, k]))
+                  }
+                }
+            }
+        }
+    }
+    diag(p) <- 0
+    return(p)
+}
+
+CondorcetRank <- function(BallotMatrix) {
+    Num_Candidates <- dim(BallotMatrix)[1]
+    Rankings <- matrix(nrow = Num_Candidates, ncol = 3)
+    CurrentBallot <- BallotMatrix
+    CurrentRank <- 1
+    while (CurrentRank <= Num_Candidates) {
+        CurrentNames <- as.vector(CurrentBallot[, 1])
+        CurrentSize <- length(CurrentNames)
+        CurrentVotes <- VoteExtract(CurrentBallot)
+        Pairwise <- matrix(nrow = CurrentSize, ncol = CurrentSize)
+        Pairwise <- PairCount(CurrentVotes)
+        Winner <- vector(length = CurrentSize)
+
+        # Check for Condorcet Winner
+
+        for (i in 1:CurrentSize) {
+            Winner[i] <- sum(Pairwise[i, ] > Pairwise[, i]) == (CurrentSize -
+                1)
+        }
+        if (sum(Winner == TRUE) == 1) {
+            # Condorcet Winner Exists
+            CurrentWinner <- which(Winner == TRUE)
+            Rankings[CurrentRank, ] <- c(CurrentNames[CurrentWinner], CurrentRank,
+                "Condorcet")
+        } else {
+
+            # Condorcet Winner does not exist, calculate Schulze beatpaths
+
+            Pairwise <- Schulze(Pairwise)
+            for (i in 1:CurrentSize) {
+                Winner[i] <- sum(Pairwise[i, ] > Pairwise[, i]) == (CurrentSize -
+                  1)
+            }
+            if (sum(Winner == TRUE) == 1) {
+                # Schwartz set has unique member
+                CurrentWinner <- which(Winner == TRUE)
+                Rankings[CurrentRank, ] <- c(CurrentNames[CurrentWinner], CurrentRank,
+                  "Schulze")
+            }
+        }
+        CurrentBallot <- CurrentBallot[-CurrentWinner, ]
+        CurrentRank = CurrentRank + 1
+    }
+    Rankings <- data.frame(Rankings)
+    names(Rankings) <- c("Name", "Rank", "Method")
+    return(Rankings)
+}
+CondorcetRank(votes)
+```
+
+So here again, Poster A is the winner, but now the runner-up is Poster B: that
+is, in all pairwise elections, Poster B came out the winner more often than
+Poster D.
+
+As it turned out, looking at the data, Poster A had the most first preferences
+anyway with three votes, so to keep it simple, we should have picked it anyway!
+But what's interesting, is that while Posters D and E each had 2 first
+preferences, they were ranked third and fourth respectively by the Condorcet
+method: most people preferred other posters.
+
+What if the preferences had been slightly different? Let's look at swapping two
+preferences for a single judge: Judge 8 will now vote Poster D first, and Poster
+E fourth:
+
+```{r,echo=TRUE,eval=TRUE}
+votes2 <- votes
+votes2$J8[4] <- 1
+votes2$J8[5] <- 4
+```
+
+The Borda method still places Poster A first, with Posters E and C swapping
+places:
+
+```{r,echo=FALSE,eval=TRUE}
+AvgRank(votes2)
+```
+
+Most importantly though, the Concordet method now chooses Poster D as the
+winner, with Poster A coming second!
+
+```{r,echo=FALSE,eval=TRUE}
+CondorcetRank(votes2)
+```
+
+So whilst Posters A and D have the same number of first preferences, more people
+preference D over all other posters, than they do A.
+
+Majority rules!
