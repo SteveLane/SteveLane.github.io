@@ -1,0 +1,8 @@
+- id: brain-power
+  description: Image container for brain power post.
+  imagefolder: /public/img/galleries/brain-power
+  images:
+  - name: fig1a.png
+    thumb: fig1a.png
+    title: Figure 1A
+    text: Figure 1A
