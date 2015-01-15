@@ -50,4 +50,13 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+<!-- Custom JavaScript files set in YAML front matter for gallery pages -->
+{% for js in page.customjs %}
+  <script type="text/javascript" src="{{ js }}"></script>
+  {% if forloop.last == true %}
+    <link href="{{site.baseurl}}public/css/lightbox.css" rel="stylesheet" />
+    <link href="{{site.baseurl}}public/css/gallery-grid.css" rel="stylesheet" />
+  {% endif %}
+{% endfor %}
+
 </head>
