@@ -1,0 +1,64 @@
+---
+layout: post
+title: "Bayesian Adaptive Designs"
+subtitle: "Are they truly no longer the domain for statisticians only?"
+comments: true
+tags: redcap data-collection
+bibliography: ~/Documents/library.bib
+output:
+  md_document:
+    includes:
+      in_header: bayesian-adaptive-designs.header
+---
+
+Research design methodology&mdash;especially clinical and other research
+involving human participants&mdash;that can make better use of already limited
+resources should definitely be considered. Adaptive designs, outcome-adaptive
+randomisation, dynamic treatment strategies and sequential multiple assignment
+randomisation trials are some of the designs that are gaining momentum. But are
+Bayesian Adaptive Designs (BADs) really
+
+> no longer 'a dream for statisticians only'?
+
+as suggested by @Gajewski2015?
+
+I'm not really sure this is true, and perhaps their opening line should be seen
+more as *clickbait*, as the authors really do not provide any solid evidence for
+this assertion. At a superficial level, the first three named authors all have
+statistics PhDs, and the article is published in
+[Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258),
+a high-ranking journal focusing on (funnily enough) statistics in medicine!
+
+So who then, are BADs for? @Gajewski2015 don't really say. The state that they
+are being published more in non-statistical journals, which
+
+> indicates that the time is right for the use of BAD
+
+but in all reality, I think you're going to need a statistician to help you plan
+one. In their introduction, @Gajewski2015 discuss that they will
+
+> show how simulation quickly becomes the tool of choice because of its
+> flexibility
+
+but without expertise in conducting simulation studies, such a research design
+is already unattainable, and still remains possible for only those research
+groups who have access to statistical expertise.
+
+@Gajewski2015 also point to a methodology statement by @PCORI2013, which is seen
+to encourage the use of BADs in patient centred outcomes research. This is
+great, as I think this sort of design is definitely useful, but it still doesn't
+help bring the methodology out to the general researcher. If you are interested
+in BADs, then the PCORI methodology report is a good read, as I think it does
+touch on all the significant inclusions you'll need in your statistical analysis
+plan for your study.
+
+So, "no longer a dream for statisticians only"? Not quite. A good idea? Yes
+definitely!
+
+#### References
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\noindent
+<div style="font-size:75%">
