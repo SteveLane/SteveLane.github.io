@@ -27,3 +27,6 @@ github:
 
 twitter_username: stephenelane
 github_username: SteveLane
+
+# Exclude folders/files
+exclude:          [NonPostFiles]
