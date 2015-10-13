@@ -1,0 +1,85 @@
+Year,Gender,Variable,Value
+2001,Male,No maths,3.1
+2001,Female,No maths,7.5
+2001,Male,No maths and no science,2.1
+2001,Female,No maths and no science,5.4
+2001,Male,No science,42.6
+2001,Female,No science,50.5
+2002,Male,No maths,3.5
+2002,Female,No maths,9.7
+2002,Male,No maths and no science,2.4
+2002,Female,No maths and no science,7
+2002,Male,No science,44.1
+2002,Female,No science,52.7
+2003,Male,No maths,4.7
+2003,Female,No maths,12.4
+2003,Male,No maths and no science,3.3
+2003,Female,No maths and no science,9.2
+2003,Male,No science,43.5
+2003,Female,No science,53.1
+2004,Male,No maths,6
+2004,Female,No maths,14
+2004,Male,No maths and no science,4.1
+2004,Female,No maths and no science,10.2
+2004,Male,No science,42.8
+2004,Female,No science,52.4
+2005,Male,No maths,7.2
+2005,Female,No maths,16.4
+2005,Male,No maths and no science,4.8
+2005,Female,No maths and no science,12
+2005,Male,No science,42.8
+2005,Female,No science,52.4
+2006,Male,No maths,7.9
+2006,Female,No maths,17.3
+2006,Male,No maths and no science,5.3
+2006,Female,No maths and no science,12.3
+2006,Male,No science,41.5
+2006,Female,No science,51.7
+2007,Male,No maths,8.2
+2007,Female,No maths,18.8
+2007,Male,No maths and no science,5.5
+2007,Female,No maths and no science,13.3
+2007,Male,No science,40.8
+2007,Female,No science,51.4
+2008,Male,No maths,9
+2008,Female,No maths,19.7
+2008,Male,No maths and no science,5.9
+2008,Female,No maths and no science,13.7
+2008,Male,No science,40.4
+2008,Female,No science,51.2
+2009,Male,No maths,9.9
+2009,Female,No maths,21
+2009,Male,No maths and no science,6.4
+2009,Female,No maths and no science,14.5
+2009,Male,No science,41.7
+2009,Female,No science,50.6
+2010,Male,No maths,9.6
+2010,Female,No maths,20.9
+2010,Male,No maths and no science,6.3
+2010,Female,No maths and no science,14.6
+2010,Male,No science,40.9
+2010,Female,No science,51.2
+2011,Male,No maths,9.8
+2011,Female,No maths,21.5
+2011,Male,No maths and no science,6.2
+2011,Female,No maths and no science,14.9
+2011,Male,No science,39.5
+2011,Female,No science,50
+2012,Male,No maths,9.6
+2012,Female,No maths,21.3
+2012,Male,No maths and no science,6.4
+2012,Female,No maths and no science,14.9
+2012,Male,No science,40.2
+2012,Female,No science,50.6
+2013,Male,No maths,9.2
+2013,Female,No maths,20.6
+2013,Male,No maths and no science,5.8
+2013,Female,No maths and no science,14.6
+2013,Male,No science,39.5
+2013,Female,No science,50.3
+2014,Male,No maths,9.3
+2014,Female,No maths,21.6
+2014,Male,No maths and no science,5.9
+2014,Female,No maths and no science,14.6
+2014,Male,No science,38.4
+2014,Female,No science,49.3
