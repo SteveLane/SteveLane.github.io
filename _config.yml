@@ -1,10 +1,10 @@
 # Dependencies
-markdown:         redcarpet
-highlighter:      pygments
+# markdown:         redcarpet
+# highlighter:      pygments
 
 # Permalinks
 permalink:        /:year/:month/:title
-relative_permalinks: true
+# relative_permalinks: true
 
 # Setup
 title:            "Stephen E Lane"
@@ -30,3 +30,5 @@ github_username: SteveLane
 
 # Exclude folders/files
 exclude:          [NonPostFiles]
+
+gems: [jekyll-paginate]
