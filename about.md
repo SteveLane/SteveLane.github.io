@@ -13,7 +13,7 @@ permalink: about/
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
     function initialize() {
-		var myLatLong = new google.maps.LatLng(-38.151919, 144.3663201);
+		var myLatLong = new google.maps.LatLng(-37.797329, 144.960052);
         var mapCanvas = document.getElementById('map_canvas');
         var mapOptions = {
           center: myLatLong,
@@ -24,7 +24,7 @@ permalink: about/
 		var marker = new google.maps.Marker({
 			position: myLatLong,
 			map: map,
-			title: 'Hello World!'
+			title: 'My location'
 		});
 
 	}
@@ -37,10 +37,11 @@ permalink: about/
 <!--   your own use upon downloading. Carry on! -->
 <!-- </p> -->
 
-I am a biostatistician within the Research Directorate at Barwon Health,
-Geelong, Australia.
+I am a research fellow with the ARC Centre of Excellence for Biosecurity Risk
+Analysis at The University of Melbourne, Parkville.
 
-The views expressed on this website are solely my own, and do not necessarily reflect those of my employer.
+The views expressed on this website are solely my own, and do not necessarily
+reflect those of my employer.
 
 <div id="map_canvas"></div>
 
