@@ -1,34 +1,23 @@
-# Dependencies
-# markdown:         redcarpet
-# highlighter:      pygments
+name : Stephen E Lane
+brand : Stephen E Lane
+description : Couldn't think of anything witty to write &#12483
+keyword : 
+url:              http://www.stephenelane.com
+baseurl:          /
+# email : 
+twitter : stephenelane
+github : SteveLane
+author : Stephen E Lane
+analytics : 
+year : 2016
+# markdown : kramdown
+exclude :
+  - node_modules
+  - NonPostFiles
+
+paginate:         5
+paginate_path: "/blog/page:num"
+gems: [jekyll-paginate]
 
 # Permalinks
 permalink:        /:year/:month/:title
-# relative_permalinks: true
-
-# Setup
-title:            "Stephen E Lane"
-tagline:          "Thoughts etc."
-description:      "Couldn't think of anything witty to write &#12483"
-url:              http://www.stephenelane.com
-baseurl:          /
-
-author:
-  name:           "Stephen Lane"
-  url:            https://twitter.com/stephenelane
-
-paginate:         5
-
-# Custom vars
-version:          2.1.0
-
-github:
-  repo:           https://github.com/SteveLane
-
-twitter_username: stephenelane
-github_username: SteveLane
-
-# Exclude folders/files
-exclude:          [NonPostFiles]
-
-gems: [jekyll-paginate]

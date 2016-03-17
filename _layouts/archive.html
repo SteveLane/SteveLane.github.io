@@ -7,7 +7,7 @@ layout: default
   {{ content }}
 </div>
 
-<div class="tags-list">
+<div class="row">
   {% for tag in site.tags %}
   <!-- <li style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size }} | plus: 70%"> -->
   <!--       <a href="/{{ tag | first | slugize }}/"> -->
@@ -22,7 +22,7 @@ layout: default
   {% assign t = tag | first %}
   {% assign posts = tag | last %}
 
-  <h3><a name="{{ t }}"></a>{{ t | downcase }}</h3>
+  <h3><i class = "fa fa-tag"></i><a name="{{ t }}"></a>&emsp;{{ t | downcase }}</h3>
   <ul>
     {% for post in posts %}
     {% if post.tags contains t %}

@@ -1,0 +1,10 @@
+/* TEAM */
+  Developer: Stephen Lane
+  Site: stephenelane.com
+  Twitter: @stephenelane
+  Github: @SteveLane
+  Location: Geelong, Victoria, Australia
+
+/* SITE */
+  Standards: HTML5, MD, SCSS/CSS3, JS 
+  Components: Zurb Foundation, Jykill, jQuery, Modernizr, bower, grunt
