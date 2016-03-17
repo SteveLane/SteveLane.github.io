@@ -8,7 +8,7 @@ baseurl:          /
 twitter : stephenelane
 github : SteveLane
 author : Stephen E Lane
-analytics : 
+analytics : UA-56563625-1
 year : 2016
 # markdown : kramdown
 exclude :
