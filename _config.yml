@@ -20,4 +20,4 @@ paginate_path: "/blog/page:num"
 gems: [jekyll-paginate]
 
 # Permalinks
-permalink:        /:year/:month/:title
+permalink:        /blog/:year/:month/:title
