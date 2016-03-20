@@ -1,0 +1,22 @@
+{% if page.isblog %}
+<div class="large-12 small-12 columns">
+<div class="large-6 small-6 columns">
+{% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}blog/"><i class="fa fa-chevron-left"></i>Newer posts</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}blog/page{{paginator.previous_page}}"><i class="fa fa-chevron-left"></i>Newer posts</a>
+    {% endif %}
+{% else %}
+      <span class="pagination-item newer"><i class="fa fa-chevron-left"></i>Newer posts</span>
+{% endif %}
+</div>
+<div class="large-6 small-6 columns" align="right">
+{% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}blog/page{{paginator.next_page}}">Older posts<i class="fa fa-chevron-right"></i></a>
+  {% else %}
+    <span class="pagination-item older">Older posts<i class="fa fa-chevron-right"></i></span>
+    {% endif %}
+</div>
+</div>
+{% endif %}
