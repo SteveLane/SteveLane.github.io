@@ -11,20 +11,17 @@
     <!-- CSS  Get: http://www.google.com/fonts/
     http://stackoverflow.com/questions/7985081/how-to-deploy-a-jekyll-site-locally-with-css-js-and-background-images-included
     ================================================== -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,800|Raleway:400,200,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Titillium+Web:400,200,700|Raleway:400,200,700|Open+Sans:400,300,700|Exo:400,200,700" rel="stylesheet" type="text/css">
     <!-- Fount Awesome -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ site.baseurl }}css/style.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}css/app.css" />
 
     <!-- CSS for github widget -->
     <link rel="stylesheet" href="{{ site.baseurl }}css/github-activity-0.1.4.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
 
-    <!-- Ah, the favicon.
-    ================================================== -->
-    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
     <!-- Open Graph: https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/
     Twitter: https://dev.twitter.com/docs/cards/types/summary-card
@@ -39,10 +36,11 @@
     <meta name="twitter:title" content="{{ page.title }}">
     <meta name="twitter:description" content="{{ page.description }}">
     <meta name="twitter:image" content="{{ page.imageurl }}">
-  
+
+    <!-- I'm not sure I care about modernizing! -->
     <!-- modernizr
     ================================================== -->
-    <script src="{{ site.baseurl }}bower_components/modernizr/modernizr.js"></script>
+    <!-- <script src="{{ site.baseurl }}bower_components/modernizr/modernizr.js"></script> -->
 
     <!-- Github activity script -->
     <script type="text/javascript" src="{{ site.baseurl }}js/github-activity-0.1.4.min.js"></script>
@@ -50,129 +48,71 @@
   </head>
   <body>
 
-<div class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap"> 
-    <!-- Add header and nav here  -->
+    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+      <div class="title-bar-title">Menu</div>
+    </div>
     
-        <!--[if lt IE 8]>
-            <div data-alert class="alert-box alert radius" class="browsehappy">Please <a href="http://browsehappy.com/">upgrade your browser</a>. <a href="#" class="close">&times;</a></div>
-            <![endif]-->
-
-	<!-- Try this instead of the current links/header -->
-	<!-- FIX HERE -->
-	<div class="fixed">
-	<nav class="top-bar" data-topbar role="navigation">
-	  <ul class="title-area">
-	    <li class="name">
-	      <h1><a href="{{ site.url }}">{{ site.brand }}</a></h1>
-	    </li>
-	    <li class="toggle-topbar menu-icon">
-	      <a href="#"><span>Menu</span></a>
-	    </li>
-	  </ul>
-
-	  <section class="top-bar-section">
-	    <ul class="right">
+    <div class="top-bar" id="main-menu">
+      <div class="top-bar-left">
+	<ul class="menu">
+	  <li><a href="{{ site.url }}">{{ site.brand }}</a></li>
+	</ul>
+      </div>
+      <div class="top-bar-right">
+    	<ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+	  <li>
+	    <a href="https://github.com/{{ site.github }}/">
+              <i class="fa fa-github">
+              </i>
+	      @{{ site.github }}</a>
+	  </li>
+	  <li class="has-submenu">
+	    <a href="{{ site.baseurl }}blog/">Blog</a>
+	    <ul class="submenu menu vertical" data-submenu>
 	      <li>
-		<a href="https://github.com/{{ site.github }}/">
-                  <i class="fa fa-github">
-                  </i>
-		@{{ site.github }}</a>
-		<!-- <a href="#">Button</a> -->
+		<a href="{{ site.baseurl }}blog/">Latest blog posts</a>
 	      </li>
-	      <li class="has-dropdown">
-		<a href="{{ site.baseurl }}blog/">Blog</a>
-		<ul class="dropdown">
-		  <li>
-		    <a href="{{ site.baseurl }}blog/">Latest blog posts</a>
-		  </li>
-		  <!-- active class has the link highlighted -->
-		  <!-- <li class="active"> -->
-		  <li>
-		    <a href="{{ site.baseurl }}blog/archive">Blog archive</a>
-		  </li>
-		</ul>
+	      <li>
+		<a href="{{ site.baseurl }}blog/archive">Blog archive</a>
 	      </li>
 	    </ul>
-
-	    <!-- <ul class="left"> -->
-	    <!--   <li> -->
-	    <!-- 	<a href="#">Left Nav Button</a> -->
-	    <!--   </li> -->
-	    <!-- </ul> -->
-
-	  </section>
-	</nav>
-	</div>
-    <!-- <header id="header" class="row"> -->
-
-    <!--     <div class="small-12 columns"> -->
-    <!--         <section class="right show-for-medium-up mam"> -->
-    <!--             <ul class="inline-list"> -->
-    <!--                 {% include nav.html %} -->
-    <!--             </ul> -->
-    <!--         </section> -->
-
-    <!--         <section class="right show-for-small"> -->
-    <!--             <ul class="inline-list mam"> -->
-    <!--             <li> -->
-    <!--                 <a class="right-off-canvas-toggle" href="#"><i class="fa fa-bars fa-lg"> -->
-    <!--                 </i></a> -->
-    <!--             </li> -->
-    <!--             </ul> -->
-    <!--         </section> -->
-
-    <!--         <h1><a href="{{ site.url }}">{{ site.brand }}</a></h1> -->
-
-    <!--     </div> -->
-    <!-- </header> -->
-
-        <!-- Off Canvas Menu -->
-        <aside class="right-off-canvas-menu">
-            <!-- navigation list goes here -->
-            <ul class="off-canvas-list">
-               {% include nav.html %}
-            </ul>
-        </aside>
-
-
-        <div class="row">
-          <section role="main">
-            <div class="large-12 small-12 columns">
-        
-              {{ content }} 
-           
-            </div>
-          </section>
-        </div>
-        
-
-        <footer class="site-footer row" role="contentinfo">
-          <hr/>
-	  {% include isblog.html %}
-	  <div class="row">
-          <div class="large-12 columns">
-            <ul class="inline-list">
-                {% include nav.html %}
-            </ul>
-            <p class="quiet copyright right"> <a href="https://twitter.com/{{ site.twitter }}">
-		<i class="fa fa-copyright"></i>
-                <i class="fa fa-twitter">
-                </i>
-             @{{ site.twitter }}</a>, <a href="https://github.com/{{ site.github }}/">
-                <i class="fa fa-github">
-                </i>
-             @{{ site.github }}</a> {{ site.year }}. Licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
-          </div>
-	  </div>
-        </footer>
-
-
-      <!-- close the off-canvas menu -->
-      <a class="exit-off-canvas"></a>
-
+	  </li>
+    	</ul>
       </div>
     </div>
+
+    <div class="row">
+      <section role="main">
+        <div class="large-12 small-12 columns">
+          
+          {{ content }} 
+          
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer row" role="contentinfo">
+      <hr/>
+      {% include isblog.html %}
+      <div class="row">
+        <div class="large-6 medium-6 columns">
+          <ul class="menu">
+            {% include nav.html %}
+          </ul>
+	</div>
+	<div class="large-6 medium-6 columns" style="text-align:right;">
+          <a href="https://twitter.com/{{ site.twitter }}">
+	      <i class="fa fa-copyright"></i>
+              <i class="fa fa-twitter">
+              </i>
+              @{{ site.twitter }}</a>, <a href="https://github.com/{{ site.github }}/">
+              <i class="fa fa-github">
+              </i>
+              @{{ site.github }}</a> {{ site.year }}. Licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+        </div>
+      </div>
+    </footer>
 
 
     <!-- Loading JavaScripts
@@ -181,9 +121,10 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ site.baseurl }}bower_components/jquery/dist/jquery.js"><\/script>')</script>
-    <script src="{{ site.baseurl }}js/plugins.js"></script>
-    <script src="{{ site.baseurl }}bower_components/foundation/js/foundation.min.js"></script>
-    <script src="{{ site.baseurl }}js/script.js"></script>
+    <script src="{{ site.baseurl }}bower_components/foundation-sites/dist/foundation.js"></script>
+
+    <script src="{{ site.baseurl }}bower_components/what-input/what-input.js"></script>
+    <script src="{{ site.baseurl }}js/app.js"></script>
 
     <!-- Google Analytics -->
     <script>
