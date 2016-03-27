@@ -13,7 +13,7 @@ researchers.
 
 - The whole site is built on [Jekyll](https://jekyllrb.com/), and hosted on
   [GitHub Pages](https://pages.github.com/)
-- The site scaffolding came from <a
+- The site is [Foundation 6](http://foundation.zurb.com/), with cues from <a
   href="https://github.com/daigofuji/jekyll-foundation-5-starter/"><i class="fa
   fa-github"></i>@daigofuji</a>
 - Splitting components into separate GitHub projects was inspired by <a
