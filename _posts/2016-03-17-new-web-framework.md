@@ -18,4 +18,4 @@ fa-github"></i>@cboettig</a>. Similar ideas can be found at
 [Lincoln Mullen's](http://lincolnmullen.com/) website.
 
 Currently I just have some random blog posts on this website (see the
-[archive]({{ site.baseurl }}blog/archive/)). But it'll build up eventually!
+[archive]({{ site.baseurl }}blog/archive)). But it'll build up eventually!
