@@ -11,6 +11,7 @@ author : Stephen E Lane
 analytics : UA-56563625-1
 year : 2016
 # markdown : kramdown
+  
 exclude :
   - node_modules
   - NonPostFiles

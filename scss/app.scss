@@ -1,6 +1,10 @@
 @charset 'utf-8';
 
 @import 'settings';
+// Add in custom to overide code styling
+@import 'custom-code';
+// Add in the syntax highlighting
+@import 'syntax-highlighting';
 @import 'foundation';
 @import 'motion-ui';
 
