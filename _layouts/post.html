@@ -6,49 +6,36 @@ layout: default
 {% if page.subtitle != null %}
 <h2 class="post-title">{{ page.subtitle }}</h2>
 {% endif %}
-<!-- <span class="post-date">{{ page.date | date_to_string }}</span> -->
-<div class = "row">
-     <div class="large-12 small-12 columns">
-	 {{ page.date | date_to_string }}
-     </div>
-</div>
 
-<div class="row">
-  <!-- <div class="medium-9 large-7 small-centered column"> -->
-  <div class="large-12 small-12 columns">
-    {{ content }}
-  </div>
-</div>
-   
-
-<!-- <div class="related"> -->
-<!--   <h2>Related Posts</h2> -->
-<!--   <ul class="related-posts"> -->
-<!--     {% for post in site.related_posts limit:3 %} -->
-<!--       <li> -->
-<!--         <h3> -->
-<!--           <a href="{{ post.url }}"> -->
-<!--             {{ post.title }} -->
-<!--             <small>{{ post.date | date_to_string }}</small> -->
-<!--           </a> -->
-<!--         </h3> -->
-<!--       </li> -->
-<!--     {% endfor %} -->
-<!--   </ul> -->
-<!-- </div> -->
-
-<div class="row">
-  <div class="large-12 small-12 columns">
-    <i class="fa fa-tags"></i> {% for tag in page.tags %} <a href="{{ site.baseurl }}blog/archive#{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %}
-    <!-- The icon-tags class is a twitter bootstrap class, so probably not needed here, but to have the tage listed would be nice... -->
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 small-12 columns">
-    <p class="quiet copyright left"> <a href="https://twitter.com/share" class="twitter-share-button" data-via="stephenelane" data-size="small"></a>
-    </p>
-  </div>
+<div class="sections">
+  <section id="first" data-magellan-target="first">
+    <div class="row">
+      <div class="large-9 small-12 columns">
+	{{ content }}
+      </div>
+      <div class="large-3 small-12 columns" data-sticky-container>
+	<nav class="columns sticky" data-sticky data-anchor="first" data-sticky-on="large">
+	  <div class="row">
+	    <i class="fa fa-calendar"></i>&ensp;{{ page.date | date_to_string }}
+	  </div>
+	  <div class="row">
+	    <i class="fa fa-tags"></i>
+	    {% for tag in page.tags %}
+	    {% if forloop.last != true %}
+	    <a href="{{ site.baseurl }}blog/archive#{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;">{{ tag }}</a>,
+	    {% else %}
+	    <a href="{{ site.baseurl }}blog/archive#{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;">{{ tag }}</a>
+	    {% endif %}
+	    {% endfor %}
+	  </div>
+	  <div class="row">
+	    <p class="quiet copyright left"> <a href="https://twitter.com/share" class="twitter-share-button" data-via="stephenelane" data-size="small"></a>
+	    </p>
+	  </div>
+	</nav>
+      </div>
+    </div>
+  </section>
 </div>
 
 <div class="row">
