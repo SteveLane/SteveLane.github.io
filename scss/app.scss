@@ -3,8 +3,6 @@
 @import 'settings';
 // Add in custom to overide code styling
 @import 'custom-code';
-// Add in the syntax highlighting
-@import 'syntax-highlighting';
 @import 'foundation';
 @import 'motion-ui';
 
@@ -52,3 +50,6 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+// Add in the syntax highlighting
+@import 'syntax-highlighting';
