@@ -10,7 +10,7 @@ tags: github-pages, Jekyll, foundation-6
 <div class="row" data-equalizer>
 	<div class="large-6 small-12 columns" data-equalizer-watch>
 		<p>I am a research fellow with the <a
-href="http://cebra.unimelb.edu.au/">ARC Centre of Excellence for Biosecurity Risk Analysis</a> at The University of Melbourne,
+href="http://cebra.unimelb.edu.au/">Centre of Excellence for Biosecurity Risk Analysis</a> at The University of Melbourne,
 			Parkville. I am interested in effective data communication, and in the
 			preparation, collation and management of complex datasets.</p>
 			<p>In the menu on the top right of the page, you'll find links to my
