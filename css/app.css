@@ -1331,8 +1331,8 @@ code {
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #0a0a0a;
-  background-color: #cacaca;
-  border: 1px solid #cacaca;
+  background-color: #fdf6e3;
+  border: 1px solid #fdf6e3;
   padding: 0.125rem 0.3125rem 0.0625rem; }
 
 kbd {
@@ -4243,6 +4243,7 @@ table.hover tr:nth-of-type(even):hover {
  */
 pre {
   background-color: #fdf6e3;
+  margin: 1.0em;
   padding: 1.2em;
   box-shadow: 0 0 1em #F78536;
   -webkit-box-shadow: 0 0 1em #F78536;
