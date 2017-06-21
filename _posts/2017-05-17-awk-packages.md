@@ -5,6 +5,8 @@ comments: true
 tags: R cmdline awk
 ---
 
+> UPDATE: 2017-06-21. I've updated the script so that it now sorts the package list, and removes duplicates.
+
 Sometimes you may be working on an analysis package that's spread into a wide array of scripts, each using various libraries, and you may have lost track of all those libraries your analysis requires.
 
 When actually developing an R package, you list the packages your package needs in order to work in the `DESCRIPTION` file (see [here](http://r-pkgs.had.co.nz/description.html#dependencies)).
@@ -56,6 +58,9 @@ for filename in $folder/*.r; do
 	awk -F '[(]|[)]' '/^library|^require/{print $2;}' $filename >> $inst
     fi
 done
+sort < $inst > $inst.bk
+uniq < $inst.bk > $inst
+rm $inst.bk
 ```
 
 Make the file executable (`chmod u+x strip-libs.sh`, if you call the file `strip-libs.sh`). Assuming your scripts are stored in the folder `R`, and you want to store the package list in the file `installs.txt`, pass those as arguments to the executable:
@@ -63,3 +68,5 @@ Make the file executable (`chmod u+x strip-libs.sh`, if you call the file `strip
 ```bash
 $ ./strip-libs.sh R/ installs.txt
 ```
+
+The final three lines of the script are a simple hack to sort and remove duplicates in the package list. If you're on a *nix-like, `sort` and `uniq` should be available to you.
