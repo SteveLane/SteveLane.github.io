@@ -5,7 +5,9 @@ comments: true
 tags: R cmdline
 ---
 
-## Make all the things
+Create a new project directory easily!
+
+> Make all the things.
 
 I was starting a new data analysis project today, and came to the realisation I've been doing things stupidly. When I start a new project, I've been manually adding directories, copying over previously used `Makefile`'s and other scripts, and generally doing things slow.
 
